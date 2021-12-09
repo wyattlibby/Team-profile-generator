@@ -4,6 +4,7 @@ const generateHTML = require("./src/generatehtml");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
 const team = [];
 
 start();
@@ -57,12 +58,59 @@ async function addManager(){
 }
 
 async function addEngineer(){
-    
+    const response = await inquirer.prompt([
+        {
+            message: "what is the engineers name",
+            name: "name",
+        },
+        {
+            message: "engineers id",
+            name: "id"
+
+        },
+        {
+            message: "email adress",
+            name: "email",
+        },
+        {
+            message: "github",
+            name: "github",   
+        }
+    ]);
+
+    const Engineer = new Engineer(response.name, response.id, response.email, response.github);
+    team.push(Engineer);
+    console.log("Engineer created");
+    mainmenu();
+
 
 }
 
 async function addIntern(){
+    const response = await inquirer.prompt([
+        {
+            message: "what is the interns name",
+            name: "name",
+        },
+        {
+            message: "intern id",
+            name: "id"
 
+        },
+        {
+            message: "email adress",
+            name: "email",
+        },
+        {
+            message: "office number",
+            name: "officeNumber",   
+        }
+    ]);
+
+    const Intern = new Intern(response.name, response.id, response.email, response.school);
+    team.push(intern);
+    console.log("intern created");
+    mainmenu();
 }
 
 function finish(){
