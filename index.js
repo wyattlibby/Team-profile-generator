@@ -4,7 +4,6 @@ const generateHTML = require("./src/generatehtml");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Engineer = require("./lib/Engineer");
 const team = [];
 
 start();
@@ -78,8 +77,8 @@ async function addEngineer(){
         }
     ]);
 
-    const Engineer = new Engineer(response.name, response.id, response.email, response.github);
-    team.push(Engineer);
+    const eng = new Engineer(response.name, response.id, response.email, response.github);
+    team.push(eng);
     console.log("Engineer created");
     mainmenu();
 
@@ -102,12 +101,12 @@ async function addIntern(){
             name: "email",
         },
         {
-            message: "office number",
-            name: "officeNumber",   
+            message: "school",
+            name: "school",   
         }
     ]);
 
-    const Intern = new Intern(response.name, response.id, response.email, response.school);
+    const intern = new Intern(response.name, response.id, response.email, response.school);
     team.push(intern);
     console.log("intern created");
     mainmenu();
